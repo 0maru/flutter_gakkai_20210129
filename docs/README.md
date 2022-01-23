@@ -1,11 +1,30 @@
-# Welcome to [Slidev](https://github.com/slidevjs/slidev)!
+# LT
+発表時間15分
 
-To start the slide show:
-
-- `npm install`
-- `npm run dev`
-- visit http://localhost:3030
-
-Edit the [slides.md](./slides.md) to see the changes.
-
-Learn more about Slidev on [documentations](https://sli.dev/).
+- 1分 自己紹介・twitter_loginの紹介
+- 1分 アジェンダ
+- 1分 Melos について
+    - そもそもmelosとは？
+    - どういうのに使われているか
+    - できること
+- 3分 Melos の使い方
+    - 初期化
+    - yaml の書き方
+    - 実行方法
+    - envやignoreなどのオプションについて
+    - 引数と標準入力は使えない
+    - 標準入力が必要な時はDartでスクリプトを書いている
+    - バージョン番号の更新はDartのスクリプトでやってる
+- 5分 ライブコーディング（モノレポ、どうやって使ってるかを実演）
+    - アプリ作ってディレクトリ移動させる
+    - プラグインとライブラリを作ってモノレポで管理する
+    - melosでビルドする
+    - grinder を組み合わせる
+    - Grinder を組み合わせる理由はGrinder だとDartてスクリプトが書けるから
+    - melos だけだとパイプで渡す必要があり長いタスクを実行するのが困難
+    - 2分 プラグインでの使い方
+    - platform_interface
+    - versionup
+    - コミットログ
+1分 まとめ、会社の紹介
+ - 社員募集中です
