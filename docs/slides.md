@@ -1,43 +1,25 @@
 ---
-# try also 'default' to start simple
-theme: seriph
-# random image from a curated Unsplash collection by Anthony
-# like them? see https://unsplash.com/collections/94734566/slidev
+theme: geist
 background: https://source.unsplash.com/collection/94734566/1920x1080
-# apply any windi css classes to the current slide
 class: 'text-center'
-# https://sli.dev/custom/highlighters.html
 highlighter: shiki
-# show line numbers in code blocks
 lineNumbers: false
-# some information about the slides, markdown enabled
 info: |
   ## Slidev Starter Template
   Presentation slides for developers.
 
   Learn more at [Sli.dev](https://sli.dev)
-# persist drawings in exports and build
 drawings:
   persist: false
 ---
 
-# Welcome to Slidev
-
-Presentation slides for developers
-
-<div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
-  </span>
-</div>
-
+# MelosでFlutterのmonorepo環境を構築する 
+ 
 <div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
+  <a href="https://twitter.com/0maru_dev" target="_blank" alt="GitHub"
     class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
+    <carbon-logo-twitter />
+    @0maru_dev
   </a>
 </div>
 
@@ -47,66 +29,121 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 ---
 
-# What is Slidev?
+# 自己紹介
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
-
-<br>
-<br>
-
-Read more about [Why Slidev?](https://sli.dev/guide/why)
-
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
+<div style='display:flex'>
+  <div style="width: 70%">
+    <ul>
+      <li>Toi Yoshimaru (@0maru_dev)</li>
+      <li>
+      twitter_login のメンテナ<br />
+      https://github.com/0maru/twitter_login
+      </li>
+    </ul>    
+  </div>
+  <div style="width: 30%">
+    <img src='https://pbs.twimg.com/profile_images/1130712117445718016/7tB6uvkk_400x400.png' alt='profile'
+         class="icon">
+  </div>
+</div>
 
 <style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
+.icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
 }
 </style>
 
 ---
 
-# Navigation
+# Melos とは
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
 
-### Keyboard Shortcuts
+Melos is a CLI tool used to help manage Dart projects with multiple packages (also known as mono-repos).   
+It is currently still in active development however is in use on projects such as FlutterFire.
 
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
+-> 複数のFlutterプロジェクト/Dartパッケージを管理するCLIツール
 
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+<p>Melos が使用されているプロジェクト</p>
+<ul>
+  <li>FirebaseExtended/flutterfire</li>
+  <li>fluttercommunity/plus_plugins</li>
+  <li>rrousselGit/river_pod</li>
+</ul>
+
+<style>
+  li {
+    color: #099099;
+  }
+</style>
 
 ---
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
+
+# Monorepo とは？
+<div grid="~ cols-2 gap-2" m="-t-2">
+
+<div>
+Flutter
+
+</div>
+
+<div>
+複数言語
+
+</div>
+
+```
+- project
+  - packages/
+    - app/                      # main.dart があるエントリーポイント
+    - oooo_login/         # 自社のOAuth用のライブラリ
+    - multi_payment/  # PayPay などの決済を実装したプラグイン
+    - maru_utils/         # よく使う処理やWidget をまとめたライブラリ
+```
+
+```
+- project
+  - typescript
+    - client
+    - utils
+    - BFF
+  - go
+    - server
+    - batch
+  - python
+    - tools
+```
+
+</div>
+
+---
+
+# Melos の使い方
+
+<p>1. Melos のインストール</p>
+<p>2. プロジェクトに対してMelos を有効にする</p>
+
+--- 
+
+# Melos のインストール
+
+```
+dart pub global activate melos
+```
+
+---
+
+# 設定ファイルの作成
+
+```yaml
+# melos.yaml
+name: flutter_monorepo_project
+packages:
+  - "*"
+  - "packages/**"
+```
+
 ---
 
 # Code
