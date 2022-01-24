@@ -1,0 +1,10 @@
+name: flutter_monorepo_project
+packages:
+  - "*"
+  - "packages/**"
+
+scripts:
+  get:all:
+    run: |
+      melos exec -c 1 -- \
+        "flutter pub get"
