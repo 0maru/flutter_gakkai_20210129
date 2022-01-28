@@ -98,6 +98,7 @@ project
     - app/                      # main.dart があるエントリーポイント
     - oooo_login/         # 自社のOAuth用のライブラリ
     - oooo_utils/         # よく使う処理やWidget をまとめたライブラリ
+    - oooo_ads/           # admob 以外の広告用のプラグイン (kotlin+swift)
 ```
 
 ```yaml

@@ -27,3 +27,42 @@
     - コミットログ
 1分 まとめ、会社の紹介
  - 社員募集中です
+
+ ---
+
+# 2.設定ファイルの作成
+
+```shell
+touch melos.yaml
+```
+
+#### melos.yaml
+``` yaml
+name: flutter_monorepo_project
+packages:
+  - "*"
+  - "packages/**"
+
+scripts:
+  get:all:
+    run: |
+      melos exec -c 1 -- \
+        "flutter pub get"
+```
+
+<div class="abs-br m-6 flex flex-col gap-2">
+  <a class="text-xl icon-btn opacity-50 !border-none !hover:text-white m-0 p-0"
+     href="https://melos.invertase.dev/configuration/overview">
+    https://melos.invertase.dev/configuration/overview
+  </a>
+</div>
+
+---
+
+# 3. Melos を有効にする
+
+```shell
+melos bootstrap
+```
+
+---
