@@ -3,7 +3,8 @@
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export",
+    "export:png": "slidev export --format png"
   },
   "dependencies": {
     "@slidev/cli": "^0.28.2",
@@ -11,5 +12,8 @@
     "@slidev/theme-seriph": "*",
     "slidev-theme-geist": "^0.6.0"
   },
-  "name": "docs"
+  "name": "docs",
+  "devDependencies": {
+    "playwright-chromium": "^1.18.0"
+  }
 }

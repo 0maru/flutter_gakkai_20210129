@@ -1,16 +1,5 @@
 ---
 theme: geist
-background: https://source.unsplash.com/collection/94734566/1920x1080
-class: 'text-center'
-highlighter: shiki
-lineNumbers: false
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
-
-  Learn more at [Sli.dev](https://sli.dev)
-drawings:
-  persist: false
 ---
 
 # MelosでFlutterのmonorepo環境を構築する 
@@ -37,7 +26,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
       <li>Toi Yoshimaru (@0maru_dev)</li>
       <li>
       twitter_login のメンテナ<br />
-      https://github.com/0maru/twitter_login
+      <a href="https://github.com/0maru/twitter_login">https://github.com/0maru/twitter_login</a>
       </li>
     </ul>    
   </div>
@@ -60,16 +49,18 @@ The last comment block of each slide will be treated as slide notes. It will be 
 # Melos とは
 
 
-Melos is a CLI tool used to help manage Dart projects with multiple packages (also known as mono-repos).   
-It is currently still in active development however is in use on projects such as FlutterFire.
+複数のFlutter プロジェクト/Dart パッケージを管理するCLIツール  
+  
+・ ローカルパッケージのリンクとインストール  
+・ ローカルパッケージで同時にコマンドを実行する
 
--> 複数のFlutter プロジェクト/Dart パッケージを管理するCLIツール
+その他諸々（特にプラグイン・ライブラリ向けの機能が多い）
 
 <p>Melos が使用されているプロジェクト</p>
 <ul>
-  <li>FirebaseExtended/flutterfire</li>
-  <li>fluttercommunity/plus_plugins</li>
-  <li>rrousselGit/river_pod</li>
+  <li>・ FirebaseExtended/flutterfire</li>
+  <li>・ fluttercommunity/plus_plugins</li>
+  <li>・ rrousselGit/river_pod</li>
 </ul>
 
 <style>
@@ -82,9 +73,9 @@ It is currently still in active development however is in use on projects such a
 
 # Melos でできること
 
-複数のプロジェクトを管理することができる
+複数のFlutter プロジェクト/Dart パッケージを管理するCLIツール  
 
-そもそもFlutterで複数のプロジェクトとは？？
+-> そもそもFlutterで複数のプロジェクトとは？？
 
 ---
 
@@ -101,17 +92,16 @@ Flutter
 
 </div>
 
-```
-- project
+```yaml
+project
   - packages/
     - app/                      # main.dart があるエントリーポイント
     - oooo_login/         # 自社のOAuth用のライブラリ
-    - multi_payment/  # PayPay などの決済を実装したプラグイン
-    - maru_utils/         # よく使う処理やWidget をまとめたライブラリ
+    - oooo_utils/         # よく使う処理やWidget をまとめたライブラリ
 ```
 
-```
-- project
+```yaml
+project
   - typescript
     - client
     - utils
@@ -127,29 +117,31 @@ Flutter
 
 ---
 
-# Melos の使い方
+# Melos の初期設定
 
 <p>1. Melos のインストール</p>
-<p>2. プロジェクトに対してMelos を有効にする</p>
 
---- 
-
-# Melos のインストール
-
-```
+```shell
 dart pub global activate melos
 ```
 
----
+<p>2. Melos の構成ファイルを作成する</p>
 
-# 設定ファイルの作成
-
-```
+```shell
 touch melos.yaml
 ```
 
+<p>3. プロジェクトに対してMelos を有効にする</p>
+
+```shell
+melos bootstrap
+```
+---
+
+# Melos の構成ファイル
+
 #### melos.yaml
-``` 
+``` yaml
 name: flutter_monorepo_project
 packages:
   - "*"
@@ -162,37 +154,46 @@ scripts:
         "flutter pub get"
 ```
 
+<div class="abs-br m-6 flex flex-col gap-2">
+  <a class="text-xl icon-btn opacity-50 !border-none !hover:text-white m-0 p-0"
+     href="https://melos.invertase.dev/configuration/overview">
+    https://melos.invertase.dev/configuration/overview
+  </a>
+</div>
+
 ---
 
 # Melos の実行方法
 
 #### スクリプトを指定して実行する
-```
+```shell
 melos run get:all
 ```
 
 #### スクリプト一覧をみてから実行する
-```
+```shell
 melos run
 
-Enter your choice? 1
+1) get:all
+
+? Enter your choice
 ```
 ---
 
 # Melos のオプション
 
-#### --scope
-```
-melos run --scope="app" -- "flutter test -t integration_test"
+#### --scope（実行対象を指定する）
+```shell
+melos run --scope="app" -- "flutter test"
 ```
 
-#### --ignore
-```
+#### --ignore（特定のディレクトを実行対象外にする）
+```shell
 melos run --ignore="*example*" -- "flutter pub get"
 ```
 
-#### --flutter
-```
+#### --flutter（Flutter に依存しているプロジェクトのみで実行する）
+```shell
 melos run --flutter -- "flutter run build"
 ```
 
@@ -216,6 +217,20 @@ melos run --flutter -- "flutter run build"
 
 ---
 
-# 会社紹介
+# おまけ
 
-新卒・中途のエンジニア募集中です！！
+新卒・中途のエンジニア募集中です！！  
+
+話を聞きたいなどでも大丈夫です  
+気になった方はコーポレートサイトまたはTwitter のDM までお願いします！！
+
+<div>
+  <div>
+    コーポレート: <a href="https://www.torico-corp.com/recruit/">https://www.torico-corp.com/recruit/</a>
+  </div>
+  <div>
+    Twitter: <a href="https://twitter.com/0maru_dev">https://twitter.com/0maru_dev</a>
+  </div>
+</div>
+
+
